@@ -1,0 +1,325 @@
+/* Resetting margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and basic layout */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Header Section */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  font-size: small;
+  font-style: oblique 10deg;
+  font-stretch: condensed;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav ul {
+  display: flex;
+  list-style: none;
+}
+
+.header-nav ul li {
+  margin: 0 15px;
+}
+
+.header-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* About Section */
+.container {
+  display: flex; /* Flexbox layout for alignment */
+  height: 500px; /* Adjust height as needed */
+}
+
+.circle img {
+  width: 450px;
+  height: 450px;
+  object-fit: cover; /* Ensures the image fills the circle */
+  border-radius: 100%; /* Makes the image itself circular */
+}
+
+/* Left Section */
+.left-section {
+  flex: 1;
+  padding: 10px;
+  background-color: blueviolet;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-section h1 {
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Show ellipsis for overflow text */
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Center Section */
+.center-section {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle {
+  width: 250px;
+  height: 250px;
+  border: 2px solid black;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  background-color: #e6e6e6;
+}
+
+/* Side Menu */
+.side-menu {
+  flex: 0.5; /* Adjust the width as needed */
+  background-color: red;
+  padding: 20px;
+  text-align: center;
+}
+
+.side-menu h3 {
+  margin-top: 0;
+  font-size: 24px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0 0;
+}
+
+.side-menu ul li {
+  margin: 10px 0;
+}
+
+.side-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  display: block; /* Makes the link take the full width */
+  padding: 8px 0;
+  transition: color 0.3s, background 0.3s;
+}
+
+.side-menu ul li a:hover {
+  color: #4CAF50;
+  background-color: #555;
+  padding-left: 10px;
+}
+
+/* Skills Section */
+#skills {
+  padding: 50px 20px;
+  background-color: #f0f0f0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.skill-item {
+  background-color: #fff;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #333;
+  border-radius: 5px;
+}
+
+.skill-item:hover {
+  background-color: #ddd;
+}
+
+/* Professional Experience Section */
+#experience {
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+.separator {
+  margin-top: 40px;
+  border: 0;
+  border-top: 2px solid #ccc;
+}
+
+/* Projects Section */
+#projects {
+  padding: 50px 20px;
+  background-color: #f4f4f4;
+}
+
+.project-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.project-item {
+  background-color: #fff;
+  padding: 20px;
+  flex: 1;
+  text-align: center;
+}
+
+.project-item a {
+  color: #333;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.project-item a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Section */
+#contact {
+  padding: 50px 20px;
+  background-color: #fff;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#contact-form button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#contact-form button:hover {
+  background-color: #555;
+}
+
+/* Footer Section */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.social-media {
+  margin-bottom: 20px;
+}
+
+.social-icon {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.social-icon:hover {
+  text-decoration: underline;
+}
+
+/* Accordion Styles */
+.accordion {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.accordion-btn {
+  background-color: #f7f7f7;
+  border: none;
+  outline: none;
+  text-align: left;
+  width: 100%;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.plus-icon {
+  font-size: 20px;
+  color: #333;
+}
+
+.accordion-content {
+  display: none;
+  padding: 15px;
+  background-color: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+.section-title {
+  text-align: Left;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.centered-heading {
+  text-align: center; /* Centers text horizontally */
+  margin-top: 20px; /* Adjust spacing as needed */
+}

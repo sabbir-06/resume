@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Years Calculator</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff; /* Light blue background */
+        }
+        
+        /* Centered Box Styling */
+        #calculatorBox {
+            background-color: #fff; /* White background for form */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+            color: #333; /* Darker text color */
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #555; /* Slightly muted color */
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007BFF; /* Blue for result text */
+        }
+    </style>
+</head>
+<body>
+    <div id="calculatorBox">
+        <h1>Dog Years Calculator</h1>
+        <form id="dogYearsForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+
+            <label for="age">Your Age:</label>
+            <input type="number" id="age" placeholder="Enter your age" min="1" required>
+
+            <button type="button" onclick="calculateDogYears()">Calculate</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function calculateDogYears() {
+            // Get user input
+            const name = document.getElementById('name').value.trim();
+            const age = parseInt(document.getElementById('age').value);
+
+            // Validate inputs
+            if (!name || isNaN(age) || age < 1) {
+                document.getElementById('result').innerText = "Please enter a valid name and age greater than 0.";
+                return;
+            }
+
+            // Early years calculation
+            let earlyYears = 2;
+            earlyYears *= 10.5;
+
+            // Later years calculation
+            let laterYears = age - 2;
+            laterYears *= 4;
+
+            // Total dog years
+            const dogYears = earlyYears + laterYears;
+
+            // Display result
+            document.getElementById('result').innerHTML = 
+                `My name is ${name.toLowerCase()}. I am ${age} years old in human years, which is ${dogYears} years old in dog years.`;
+        }
+    </script>
+</body>
+</html>
