@@ -6,5 +6,5 @@ const second = 4
 
 // Add your code here
 
-if (5>4){
- console.log('First is biger than second');
+if (first > second){
+ console.log('First is biger than second')};

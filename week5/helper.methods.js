@@ -13,11 +13,7 @@ if (response && Array.isArray(response.users)) {
             users.push(user.name); // Add the user to the result array
         }
     });
-}
-
-        
-
-        return users;
+}        return users;
     }
 
     getUsersByRole(response, role) {
@@ -69,6 +65,12 @@ if (response && Array.isArray(response.users)) {
         // ensure that the user has balance between the expected dynamically populated value
         if (user.balance !== undefined && user.balance >= balMin && user.balance <= balmax) {
                 users.push(user.name); // add hte user to the result array
+
+/////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////
             }
         })
     }

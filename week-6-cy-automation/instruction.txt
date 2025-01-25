@@ -1,0 +1,9 @@
+1. Should log in with your existing account as an admin (you can use your own user with any role)
+
+2. Should log out
+
+3. Should register a new account
+
+4. Should not register with an already existing email account
+
+5. Should not register without filling in required fields
