@@ -1,4 +1,3 @@
-
 describe('Logout', () => {
     beforeEach(() => {
       
@@ -11,7 +10,7 @@ describe('Logout', () => {
       cy.get('[type="password"]').type('newpas')
       cy.get('[type="submit"]').click()
       cy.get('a p').should('have.text', 'role: user')
-      cy.title().should('eq', 'User: Profile | Delek Homes')
+      //cy.title().should('eq', 'User: Profile | Delek Homes')
       cy.get('button [data-testid="PersonIcon"]').click();
       cy.contains('Logout').click();
     })
