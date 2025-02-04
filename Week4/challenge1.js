@@ -28,3 +28,17 @@ function findLongestString(arr) {
 console.log(findLongestString(["I", "am", "learning", "JavaScript"])); // "JavaScript"
 console.log(findLongestString(["one", "two", "three"])); // "three"
 console.log(findLongestString(["1", "22", "333"])); // "333"
+
+
+const names = ['victoria', 'sergo', 'elizabeth' , 'danial']
+
+let largestname = names[0];
+for (let i = 0; i < names.length; i++) {
+ const currentName = names[i];
+ if (currentName.length> largestname.length){
+    largestname = currentName
+ }   
+    
+}
+
+console.log(largestname)

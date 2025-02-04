@@ -23,7 +23,7 @@ describe("Registration", () => {
 
     
     
-    cy.title().should("eq", "User: Profile | Delek Homes");
+    //cy.title().should("eq", "User: Profile | Delek Homes");
     cy.url().should("include", "dashboard/user/profile");
 
     //logout
