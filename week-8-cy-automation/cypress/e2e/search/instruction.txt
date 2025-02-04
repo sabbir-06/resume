@@ -1,0 +1,28 @@
+//Should search by keyword (assertion should check listing item on the listing page)
+
+//Should search by bedrooms  (assertion should check listing item on the listing page)
+
+//Should search by city(create your listing with a unique city) (assertion should check all details for listing item upon clicking “More Info“)
+
+//Should search by price
+
+
+Notes correspond to test cases above based on the number:
+
+When searching, use the keyword “Galewood“ and verify that the title of the listing appears on the page “Title of your own listing ”
+
+When searching, use the bedrooms filter “2+”. When you click More Info on any random listing, you must verify that the number of bedrooms should equal or more than 2.
+
+When searching, use the City field and type a unique city name ( use from the pre-conditions). You will use this name for the search listing to be sure that the result should display only one listing with this city and verify that only one listing exists on the page
+
+Use the same listing created in step 3 and verify that all of the data that shows on the search page also shows up on the listing details page after you click “More Info“
+
+Use the URL (which should contain the price of your own listing ) and go directly to the search page. EX: Delek Homes 
+
+All previous tests should be in this solution - Login, Logout, Registration
+
+Use POM for all tests
+
+All tests should contain assertions!
+
+Please - > BEFORE sharing your result, please check if your hw matches all requirements!

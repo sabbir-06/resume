@@ -2,10 +2,8 @@
 
 function findLongestString(arr){
 
-    var lgth = 0;
-
-    var longest = "";
-
+        }
+        
     for (let i = 0; i < arr.length; i++) {
         lgth.length = arr[i];
         
