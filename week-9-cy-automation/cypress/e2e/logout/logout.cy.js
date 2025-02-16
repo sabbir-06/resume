@@ -1,9 +1,10 @@
-import loginPage from "../../../page_objects/login.page";
+import loginPage from "../../page_objects/login.page";
 
-import homePage from "../../../page_objects/home.page";
+import homePage from "../../page_objects/home.page";
 
-import dashboardPage from "../../../page_objects/dashboard.page";
-import logoutPage from "../../../page_objects/logout.page";
+import dashboardPage from "../../page_objects/dashboard.page";
+import logoutPage from "../../page_objects/logout.page";
+
 
 import verification from '../../fixtures/Verification.json'
 

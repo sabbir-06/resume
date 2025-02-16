@@ -1,8 +1,9 @@
-import loginPage from "../../../page_objects/login.page";
+import loginPage from "../../page_objects/login.page";
 
-import homePage from "../../../page_objects/home.page";
+import homePage from "../../page_objects/home.page";
 
-import dashboardPage from "../../../page_objects/dashboard.page";
+import dashboardPage from "../../page_objects/dashboard.page";
+
 
 import user from '../../fixtures/userCredentais.json'
 
