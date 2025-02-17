@@ -5,7 +5,7 @@ function findSecondLargestNumber(arr) {
     let first = -Infinity, second = -Infinity; // declare variable with -infinity that ensure any number in array larger this
     for (let num of arr) { // doing loop
         if (num > first) { // check if num greter then num first
-            second = first; // if true second become firest
+            second = first; // if true second become first
             first = num; // new num will be first
         } else if (num > second && num < first) { // if num gretet then second and num less then first
             second = num; // if previous line true second will be first

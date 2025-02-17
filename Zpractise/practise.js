@@ -1,20 +1,15 @@
-// Write a function to find the longest string in the array
+const numbers = [1, 2, 3, 2, 4, 1, 5, 6, 3];
 
-function findLongestString(arr){
-    var lfsf = 0;
-    var longest = '';
-    for (let i = 0; i < arr.length; i++) {
-       if ( arr.length > lfsf){
-        lfsf = arr[i].length
-        longest = arr[i];
-       }
-        
-    }
-   return longest;
+const duplicates = [];
+const seen = new Set();
+
+for (let i = 0; i < numbers.length; i++) {
+  const currentNumber = numbers[i];
+  if (seen.has(currentNumber)) {
+    duplicates.push(currentNumber);
+  } else {
+    seen.add(currentNumber);
+  }
 }
 
-
-
-console.log(findLongestString(["I", "am", "learning", "JavaScript"])); // "JavaScript"
-console.log(findLongestString(["one", "two", "three"])); // "three"
-console.log(findLongestString(["1", "22", "333"])); // "333"
+console.log(duplicates); // Output: [2, 1, 3]
