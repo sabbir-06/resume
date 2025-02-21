@@ -1,0 +1,18 @@
+{
+    "title": "Monday Home",
+    "secondtitile": "Monday Home",
+    "description": "Best Home to make you poor in a short time",
+    "city": "Baltimore",
+    "address": "404 201th st",
+    "zipCode": 21210,
+    "state": "MD",
+    "price": 1000000,
+    "lotSize": 2,
+    "sqft": 950,
+    "garage": 2,
+    "bathrooms": 3,
+    "bedrooms": 5,
+    "isPublished": false,
+    "searchcity": "Baltimore",
+    "listingUrl": "https://dev.delekhomes.com/dashboard/user/profile"
+  }
