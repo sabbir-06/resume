@@ -1,4 +1,4 @@
-class registraionPage {
+class RegistraionPage {
   get firstNameinput() {
     return cy.get('[name="firstName"]');
   }
@@ -15,4 +15,4 @@ class registraionPage {
     return cy.get('[type="submit"]');
   }
 }
-export default new registraionPage();
+export default new RegistraionPage();

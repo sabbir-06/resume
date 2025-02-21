@@ -1,52 +1,47 @@
-import searchListingpage from "../../../page_objects/search.listingpage";
-import '../../support/commands';
-
-describe("example to-do app", () => {
+import FeaturedListings from "../../page_objects/search.listingpage";
+import "../../support/commands";
+describe("Search from featured-listings ", () => {
   beforeEach(() => {
-    cy.login();
+    //cy.login();
     cy.visit("/");
   });
-
   it("should search by keyword", () => {
-    searchListingpage.clickListingPage.click();
-    // searchListingpage.errorHandle;
-    searchListingpage.typePropertyName.type("Baltimore");
-    searchListingpage.clickToSearch.click();
-    // check atleasst one listing is presient
-    searchListingpage.checkOneListingPresient;
-    searchListingpage.propertyNamePresent;
-    searchListingpage.clickMoreInfo.click();
-    searchListingpage.checkmoreInfoPage;
-  });
+    cy.visit("/featured-listings");
+    FeaturedListings.typePropertyName.type("Baltimore");
+    FeaturedListings.searchButton.click();
 
+    FeaturedListings.checkOneListingPresient.should("have.length.greaterThan", 0);
+
+    FeaturedListings.propertyNamePresent.should("be.visible");
+   });
   it("Should search by bedrooms", () => {
-    searchListingpage.clickListingPage.click();
-    searchListingpage.clickBedroomButton.click();
-    searchListingpage.clickBedroomNumber.click();
-    searchListingpage.clickToSearch.click();
-    // Check if the number of bedrooms is at least 2
-    searchListingpage.checkBedroomNumber;
-  });
+    cy.visit("/featured-listings");
+    FeaturedListings.clickBedroomButton.click();
+    FeaturedListings.clickBedroomNumber.click();
+    FeaturedListings.searchButton.click();
 
+    FeaturedListings.checkBedroomNumber;
+  });
   it("Should search by city", () => {
-    searchListingpage.clickListingPage.click();
-    searchListingpage.typeCityName.type("Baltimore");
-    searchListingpage.clickToSearch.click();
-    // searchListingpage.errorHandle
-    searchListingpage.cityName;
-    searchListingpage.clickMoreInfo.click();
-    //verify more info page open
-    searchListingpage.checkmoreInfoPage;
-  });
+    cy.visit("/featured-listings");
+    FeaturedListings.typeCityName.type("Baltimore");
+    FeaturedListings.searchButton.click();
 
+    FeaturedListings.cityName.should('be.visible');
+
+    FeaturedListings.garageNumber.should("include.text", " Garage: ");
+
+    FeaturedListings.bathroomNumber.should("include.text", " Bathrooms: ");
+
+    FeaturedListings.bedroomNumber.should("include.text", " Bedrooms: ");  
+  });
   it("Should search by price", () => {
-    searchListingpage.clickListingPage.click();
-    searchListingpage.clickToSearch.click();
-    //searchListingpage.errorHandle;
-    searchListingpage.checkUrl;
-    // Assert that the page title is correct
-    searchListingpage.checkTitle;
-    // Assert that the price filter value is within the expected range
-    searchListingpage.checkPrice;
+    FeaturedListings.searchButton.click();
+
+    FeaturedListings.checkUrl.should("include", "featured-listings?price=500000-10000000");
+
+    FeaturedListings.checkTitle.should("eq", "Estate Objects | Delek Homes");
+
+    FeaturedListings.checkPrice;
   });
 });

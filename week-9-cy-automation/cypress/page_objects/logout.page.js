@@ -1,4 +1,4 @@
-class logout {
+class LogOut {
   get ploginBtn() {
     return cy.get('[type="button"]').eq(0);
   }
@@ -9,6 +9,6 @@ class logout {
     return cy.get("div h4").should("have.text", "Sign in to Delek Homes");
   }
 }
-export default new logout();
+export default new LogOut();
 
 

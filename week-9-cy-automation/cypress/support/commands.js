@@ -29,7 +29,7 @@ Cypress.Commands.add("login", () => {
       email: data.email,
       password: data.password,
     }).then((response) => {
-      window.localStorage.setItem("accessToken", response.body.accesstoken);
+      window.localStorage.setItem("accessToken", response.body.accessToken);
     });
   });
 });
@@ -41,8 +41,6 @@ Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
 
-//
-//
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //

@@ -1,4 +1,4 @@
-class dashboardPage {
+class DashboardPage {
   get roleLbl() {
     return cy.get("a p");
   }
@@ -15,5 +15,5 @@ class dashboardPage {
     return cy.title();
   }
 }
-export default new dashboardPage();
+export default new DashboardPage();  
 

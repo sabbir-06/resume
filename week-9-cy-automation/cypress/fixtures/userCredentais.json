@@ -2,5 +2,10 @@
  "email": "ska4564@gmail.com",
  "password": "newpas",
  "firstName": "sab2",
- "lastName": "kar2" 
+ "lastName": "kar2",
+ "url" : "https://dev.delekhomes.com/dashboard/user/profile",
+ "role1": "admin",  
+ "role": "realtor",
+ "title": "User: Profile | Delek Homes",
+ "fullName": "sab2  kar2"
 }

@@ -1,43 +1,45 @@
-import searchHomePositive from "../../../page_objects/search.home.positive";
-
-describe("search", () => {
+import SearchFromHomePage from "../../page_objects/search.home.positive";
+describe("Search from HomePage", () => {
   beforeEach(() => {
-    cy.login();
     cy.visit("/");
   });
-
   it("should search by keyword", () => {
-    searchHomePositive.typePropertyName.type("Baltimore");
-    searchHomePositive.clickToSearch.click();
-    // check atleasst one listing is presient
-    searchHomePositive.checkOneListingPresent;
-    searchHomePositive.searchItemVisible;
-    searchHomePositive.clickMoreInfo.click();
-    searchHomePositive.propertyRealtorVisible;
-  });
-
+    SearchFromHomePage.typePropertyName.type("Baltimore");
+    SearchFromHomePage.clickToSearch.click();
+    
+    SearchFromHomePage.checkOneListingPresent.should("have.length.greaterThan", 0);
+    SearchFromHomePage.searchItemVisible.should("be.visible");
+      });
   it("Should search by bedrooms", () => {
-    searchHomePositive.clickbedroomsbutton.click();
-    searchHomePositive.clickBedroomsNumber.click();
-    searchHomePositive.clickToSearch.click();
-    searchHomePositive.clickMoreInfo.click();
-    // Check if the number of bedrooms is at least 2
-    searchHomePositive.checkOneListingPresent;
-  });
+    SearchFromHomePage.clickbedroomsbutton.click();
+    SearchFromHomePage.clickBedroomsNumber.click();
+    SearchFromHomePage.clickToSearch.click();
+        
+    SearchFromHomePage.checkOneListingPresent.should(
+      "have.length.greaterThan",
+      0
+    );
+    SearchFromHomePage.clickMoreInfo.click();
 
+    SearchFromHomePage.bedroom.should("include.text", " Bedrooms: 5");  
+  });
   it("Should search by city", () => {
-    searchHomePositive.typecity.type("Baltimore");
-    searchHomePositive.clickToSearch.click();
-    searchHomePositive.searchItemVisible;
-    searchHomePositive.clickMoreInfo.click();
-    //verify more info page open
-    searchHomePositive.propertyRealtorVisible;
-  });
+    SearchFromHomePage.typecity.type("Baltimore");
+    SearchFromHomePage.clickToSearch.click();
+        
+    SearchFromHomePage.checkcity.should('contain.text', ' City:')    
+    SearchFromHomePage.clickMoreInfo.click();   
+    
+    SearchFromHomePage.garage.should("include.text", " Garage: ");
 
+    SearchFromHomePage.bathroom.should("include.text", " Bathrooms: ");
+
+    SearchFromHomePage.bedroom.should("include.text", " Bedrooms: ");  
+  });
   it("Should search by price", () => {
-    searchHomePositive.clickToSearch.click();
-    searchHomePositive.priceRange;
-    //asert that price rrange expected
-    searchHomePositive.filtervalue;
+    SearchFromHomePage.clickToSearch.click();
+    SearchFromHomePage.priceRange.should("include", "featured-listings?price=500000-10000000");
+    
+    SearchFromHomePage.filtervalue;
   });
 });

@@ -1,4 +1,4 @@
-class searchfromHomePage {
+class SearchFromHomePage {
   get typePropertyName() {
     return cy.get('div input[type="text"]').eq(0);
   }
@@ -8,28 +8,17 @@ class searchfromHomePage {
   get clickToSearch() {
     return cy.get('button[type="button"]');
   }
-  get errorHandle() {
-    return Cypress.on("uncaught:exception", (err, runnable) => {
-      return false;
-    });
-  }
   get checkOneListingPresent() {
-    return; // check atleasst one listing is presient
-    cy.get(".MuiPaper-root .MuiCardContent-root").should(
-      "have.length.greaterThan",
-      0
-    );
+    return cy.get(".MuiPaper-root .MuiCardContent-root");
   }
   get searchItemVisible() {
-    return cy.contains("div h5", "Baltimore").should("be.visible");
+    return cy.contains("div h5", "Baltimore");
   }
   get clickMoreInfo() {
     return cy.get('a.MuiButtonBase-root[href^="/featured-listings/"]').eq(0);
   }
   get propertyRealtorVisible() {
-    return cy
-      .contains(".MuiTypography-h4", "Property Realtor")
-      .should("be.visible");
+    return cy.contains(".MuiTypography-h4", "Property Realtor");
   }
   get clickbedroomsbutton() {
     return cy.get('div [aria-labelledby=":r2:-label :r2:"]');
@@ -40,8 +29,7 @@ class searchfromHomePage {
   get priceRange() {
     return cy
       .url()
-      .should("include", "featured-listings?price=500000-10000000");
-  }
+     }
   get CheckpageTitle() {
     return cy.title().should("eq", "Estate Objects | Delek Homes");
   }
@@ -56,5 +44,24 @@ class searchfromHomePage {
         expect(value).to.be.greaterThan(500000);
       });
   }
+  get askingPrice() {
+    return cy.contains("Asking Price");
+  }
+  get lotSizeA() {
+    return cy.contains(" Lot Size");
+  }
+  get garage() {
+    return cy.contains("Garage");
+  }
+  get bathroom() {
+    return cy.contains("Bathrooms");
+  }
+  get bedroom() {
+    return cy.contains("Bedrooms");
+  }
+
+  get checkcity() {
+    return cy.get('div.MuiGrid-root.MuiGrid-item.MuiGrid-grid-xs-6.css-1s50f5r');
+  }
 }
-export default new searchfromHomePage();
+export default new SearchFromHomePage();
