@@ -3,15 +3,20 @@
  "password": "newpas",
  "firstName": "sab2",
  "lastName": "kar2",
-  "email2": "testadmin@gmail.com",
+  "email2": "testadmin@gmail.com", 
   "password2": "newpas",
-  "url" : "https://dev.delekhomes.com/dashboard/user/profile",
-  "role": "admin",
+   "role": "admin",
   "role1": "realtor",
   "title": "User: Profile | Delek Homes",
   "fullName": "test-sab  admin",
   "rfullName": "sab2  kar2",
-  "role2": "user"
-  }
+  "role2": "user",
+  "email1": "ska464@gmail.com",  
+ "password1": "password",
+ "title1": "User: Profile | Delek Homes",
+ "fullName1": "sab2  kar2",
+ "Wrongmail": "ska464@.com",
+ "Wrongpassword": "pass"
+   }
   
 

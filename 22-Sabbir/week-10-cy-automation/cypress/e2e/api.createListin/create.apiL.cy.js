@@ -1,10 +1,10 @@
-import loginPage from "../../page_objects/login.page";
-import homePage from "../../page_objects/home.page";
-import dashboardPage from "../../page_objects/dashboard.page";
+import LoginPage from "../../page_objects/login.page.js";
+import HomePage from "../../page_objects/home.page.js";
+import DashboardPage from "../../page_objects/dashboard.page.js";
 import user from "../../fixtures/userCredentais.json";
 import verification from "../../fixtures/Verification.json";
 import "../../support/commands.js";
-import searchHomePositive from "../../page_objects/search.home.positive";
+import SearchHomePositive from "../../page_objects/search.home.positive.js";
 import apiListingService from "../../support/apiListingService.js";
 
 describe("Login with admin API token and create API listing with assertions", () => {
@@ -30,18 +30,18 @@ describe("Login with admin API token and create API listing with assertions", ()
 
   it("should search by keyword", () => {
     cy.visit("/");
-    searchHomePositive.typePropertyName.type(listingData.title);
-    searchHomePositive.clickToSearch.click();
-    searchHomePositive.desertLandHeading.should("be.visible");
-    searchHomePositive.clickMoreInfo.click();
+    SearchHomePositive.typePropertyName.type(listingData.title);
+    SearchHomePositive.clickToSearch.click();
+    SearchHomePositive.desertLandHeading.should("be.visible");
+    SearchHomePositive.clickMoreInfo.click();
 
-    searchHomePositive.askingPrice.should((elem) => {
+    SearchHomePositive.askingPrice.should((elem) => {
       const text = elem.text().replace(/\s/g, "").replace(/,/g, "");
       expect(text).to.include("AskingPrice:$600000");
     });     
 
-    searchHomePositive.lotSizeA.should("include.text", ` Lot Size: ${listingData.lotSize}`);
+    SearchHomePositive.lotSizeA.should("include.text", ` Lot Size: ${listingData.lotSize}`);
 
-    searchHomePositive.garage.should("include.text", ` Garage: ${listingData.garage}`);    
+    SearchHomePositive.garage.should("include.text", ` Garage: ${listingData.garage}`);    
   });
 });

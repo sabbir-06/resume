@@ -14,8 +14,8 @@ describe("Login", () => {
     loginPage.passwordInput.type(user.password);
     loginPage.loginBtn.click();
 
-    dashboardPage.roleLbl.should("have.text", `role: ${verification.role1}`);
+    dashboardPage.roleLbl.should("have.text", `role: ${user.role1}`);
     
-    dashboardPage.ptitle.should("eq", verification.title);    
+    dashboardPage.ptitle.should("eq", verification.title1);    
   });
 });

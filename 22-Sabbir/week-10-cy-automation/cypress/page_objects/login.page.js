@@ -1,4 +1,4 @@
-class loginPage {
+class LoginPage {
   get emailInput() {
     return cy.get('[name="email"]');
   }
@@ -20,4 +20,4 @@ class loginPage {
     this.loginBtn.click();
   }
 }
-export default new loginPage();
+export default new LoginPage();

@@ -10,7 +10,7 @@ describe("Login", () => {
 
   it("Should log-in & Logout", () => {
     cy.login();
-    cy.visit(user.url);
+    cy.visit(url);
 
     dashboardPage.roleLbl.should("have.text", `role: ${verification.role}`);
 

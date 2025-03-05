@@ -1,4 +1,4 @@
-class homepage {
+class HomePage {
   get loginBtn() {
     return cy.get('[href="/auth/login"]');
   }
@@ -6,4 +6,4 @@ class homepage {
     return cy.get('[href="/auth/register"]');
   }
 }
-export default new homepage();
+export default new HomePage();

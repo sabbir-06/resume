@@ -16,7 +16,7 @@ describe("Negative signin", () => {
         loginPage.passwordInput.type(verification.password); 
         loginPage.loginBtn.click();
       } else {
-        cy.log("invalid password-test passed");
+        cy.log("Wrong email or password-test passed");
       }
       loginPage.errorMessageEmail.then(($errorMessage2) => {
         if ($errorMessage2.is(":visible")) {

@@ -1,8 +1,9 @@
 import "cypress-file-upload";
+import user from '../fixtures/userCredentais.json';
 
 Cypress.Commands.add(
   "login",
-  (email = "testadmin@gmail.com", password = "newpas") => {
+  (email = user.email2, password = user.password2) => {
     cy.request("POST", "/api/users/login", {
       email: email,
       password: password,
@@ -10,7 +11,7 @@ Cypress.Commands.add(
       window.localStorage.setItem("accessToken", response.body.accessToken);
     });
   }
-);
+); 
 
 Cypress.Commands.add("rlogin", () => {
   cy.fixture("userCredentais.json").then((data) => {

@@ -1,4 +1,4 @@
-class searchListingpage {
+class SearchListingPage {
   get clickListingPage() {
     return cy.get('div a[href="/featured-listings"]');
   }
@@ -141,4 +141,4 @@ class searchListingpage {
     return cy.contains("Garage");
   }
 }
-export default new searchListingpage();
+export default new SearchListingPage();

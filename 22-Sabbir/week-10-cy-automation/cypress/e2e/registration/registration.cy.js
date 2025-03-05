@@ -23,20 +23,13 @@ describe("Registration", () => {
     registrationPage.submitBtn.click();
 
     dashboardPage.roleLbl.should("have.text", "role: user");
-
-    dashboardPage.ptitle.should("eq", verification.title);
-
-    dashboardPage.fullNameLbl.should("have.text", user.rfullName);
-
-    
+    dashboardPage.ptitle.should("eq", user.role1);
+    dashboardPage.fullNameLbl.should("have.text", user.rfullName);    
     dashboardPage.userIconBtn.click();
-
     dashboardPage.logoutBtn.click();
     loginPage.loginBtn.click();
     loginPage.login(email, password);
-
     dashboardPage.roleLbl.should("have.text", `role: ${user.role2}`);
-
     dashboardPage.fullNameLbl.should("have.text", user.rfullName);
   });
 });

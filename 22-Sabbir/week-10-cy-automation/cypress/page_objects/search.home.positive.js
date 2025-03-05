@@ -16,7 +16,7 @@ class SearchFromHomePage {
       return false;
     });
   }
-  get checkOneListingPresent() {
+  get listing() {
     return cy
       .get(".MuiPaper-root .MuiCardContent-root")
    }
