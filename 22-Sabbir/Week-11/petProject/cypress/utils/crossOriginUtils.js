@@ -7,10 +7,7 @@ export const loginOnDifferentOrigin = (emailAddress, testPassword) => {
     fixture.aurl,
 
     { args: { emailAddress, testPassword } },
-    ({ emailAddress, testPassword }) => {
-      const { ApplicationFormPage } = Cypress.require(
-        "../page/ApplicationFormPage"
-      );
+     ({ emailAddress, testPassword }) => {
       cy.get('[type="text"][name="email"]').type(emailAddress);
       cy.get("#sign-in-button").click();
       cy.contains("Search jobs").click();
@@ -18,7 +15,7 @@ export const loginOnDifferentOrigin = (emailAddress, testPassword) => {
   );
 };
 
-export const applyForJobOnDifferentOrigin = (fixture) => {
+export const applyForJobOnDifferentOrigin = () => {
   cy.origin("https://www.amazon.jobs", () => {
     const baseNumber = "240280";
     const randomFourDigits = Math.floor(1000 + Math.random() * 9000).toString();
@@ -148,8 +145,7 @@ export const applyForJobOnDifferentOrigin = (fixture) => {
         .trigger("mousedown")
         .click();
     }
-
-    selectDropdown("cf0cf936-f034-24af-a27a-782c75e146b1-AQ");
+    selectDropdown("77835a0b-7b01-5e96-24ea-319e5c7bcddd-AQ");
     cy.get("ul.select2-results__options").should("not.exist");
     selectDropdown("58a04f17-423f-eabd-7a57-f3409e09eb1f-AQ");
     cy.get("ul.select2-results__options").should("not.exist");
