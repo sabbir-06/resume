@@ -14,6 +14,6 @@ describe("Login", () => {
 
     DashboardPage.roleLbl.should("have.text", `role: ${user.role}`);
     
-    DashboardPage.ptitle.should("eq", user.title);    
+    DashboardPage.ptitle.should("eq", user.title); user.title
   });
 });
