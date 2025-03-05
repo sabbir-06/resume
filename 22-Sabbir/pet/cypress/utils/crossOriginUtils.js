@@ -8,9 +8,6 @@ export const loginOnDifferentOrigin = (emailAddress, testPassword) => {
 
     { args: { emailAddress, testPassword } },
     ({ emailAddress, testPassword }) => {
-      const { ApplicationFormPage } = Cypress.require(
-        "../page/ApplicationFormPage"
-      );
       cy.get('[type="text"][name="email"]').type(emailAddress);
       cy.get("#sign-in-button").click();
       cy.contains("Search jobs").click();
