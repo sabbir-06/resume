@@ -1,0 +1,26 @@
+{
+    "realtor": {
+        "email": "ska4564@gmail.com",
+        "password": "newpas",
+        "firstName": "sab2",
+        "lastName": "kar2",
+        "role": "realtor",
+        "title": "User: Profile | Delek Homes",
+        "fullName": "sab2  kar2"
+    },
+    "admin": {
+        "email": "testadmin@gmail.com",
+        "password": "newpas",
+        "firstName": "test-sab",
+        "lastName": "admin",
+        "role": "admin",
+        "title": "User: Profile | Delek Homes",
+        "fullName": "test-sab  admin"
+    },
+    "user": {
+        "firstName": "first",
+        "lastName": "last",
+        "fullName": "first  last",
+        "title": "User: Profile | Delek Homes"
+    }
+} 
