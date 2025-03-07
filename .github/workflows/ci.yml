@@ -1,4 +1,3 @@
-# .github/workflows/ci.yml
 name: CI
 
 on: [push, pull_request]
@@ -13,5 +12,7 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Navigate to project directory
+      run: cd project
     - run: npm install
     - run: npm test
