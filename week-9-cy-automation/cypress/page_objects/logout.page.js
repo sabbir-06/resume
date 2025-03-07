@@ -6,9 +6,7 @@ class LogOut {
     return cy.contains("Logout");
   }
   get varifylogout() {
-    return cy.get("div h4").should("have.text", "Sign in to Delek Homes");
+    return cy.get("div h4")
   }
 }
 export default new LogOut();
-
-

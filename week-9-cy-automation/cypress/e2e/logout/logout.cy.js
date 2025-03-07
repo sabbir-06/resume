@@ -1,19 +1,19 @@
-import DashboardPage from "../../page_objects/dashboard.page"
-import LogoutPage from "../../page_objects/logout.page"
+import dashboardPage from "../../page_objects/dashboard.page"
+import logoutPage from "../../page_objects/logout.page"
 import user from "../../fixtures/userCredentais.json";
 describe("Login", () => {
   beforeEach(() => {});
 
   it("Should log-in and log-out", () => {
     cy.login();
-    cy.visit(user.url);
+    cy.visit("/dashboard/user/profile");
 
-    DashboardPage.roleLbl.should("have.text", `role: ${user.role}`);
+    dashboardPage.roleLbl.should("have.text", `role: ${user.realtor.role}`);
 
-    DashboardPage.ptitle.should("eq", user.title);
-    LogoutPage.ploginBtn.click();
-    LogoutPage.logoutBtn.click();
+    dashboardPage.ptitle.should("eq", user.realtor.title);
+    logoutPage.ploginBtn.click();
+    logoutPage.logoutBtn.click();
 
-    LogoutPage.varifylogout;
+    logoutPage.varifylogout.should("have.text", "Sign in to Delek Homes");
   });
 });

@@ -14,10 +14,10 @@ class LoginPage {
     this.loginBtn.click();
   }
   get errorMessage() {
-    return cy.contains("Wrong email or password");
+    return cy.get('[role="alert"]');
   }
   get errorMessageEmail() {
-    return cy.contains("Email must be a valid email address");
+    return cy.get('.MuiFormHelperText-root.Mui-error')  
   }
   get firstNameInput() {
     return cy.get('[name="firstName"]');
@@ -26,7 +26,7 @@ class LoginPage {
     return cy.get('[name="lastName"]');
   }
   get registererror() {
-    return cy.contains("Input data validation failed");
+    return cy.get('[role="alert"]').contains("Input data validation failed");
   }
 }
 export default new LoginPage();

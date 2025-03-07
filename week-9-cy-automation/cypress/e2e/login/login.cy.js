@@ -1,19 +1,17 @@
-import LoginPage from "../../page_objects/login.page";
-import HomePage from "../../page_objects/home.page";
-import DashboardPage from "../../page_objects/dashboard.page";
+import loginPage from "../../page_objects/login.page";
+import dashboardPage from "../../page_objects/dashboard.page";
 import user from "../../fixtures/userCredentais.json";
 describe("Login", () => {
   beforeEach(() => {
-    cy.visit("/");
+    cy.visit("/auth/login");
   });
   it("Should log in with your existing account as an admin (you can use your own user with any role", () => {
-    HomePage.loginBtn.click();
-    LoginPage.emailInput.type(user.email);
-    LoginPage.passwordInput.type(user.password);
-    LoginPage.loginBtn.click();
+    loginPage.emailInput.type(user.realtor.email);
+    loginPage.passwordInput.type(user.realtor.password);
+    loginPage.loginBtn.click();
 
-    DashboardPage.roleLbl.should("have.text", `role: ${user.role}`);
+    dashboardPage.roleLbl.should("have.text", `role: ${user.realtor.role}`);
     
-    DashboardPage.ptitle.should("eq", user.title); user.title
+    dashboardPage.ptitle.should("eq", user.realtor.title);
   });
 });
