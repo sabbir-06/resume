@@ -1,9 +1,7 @@
 import { faker, Faker } from "@faker-js/faker";
-import homePage from "../../page_objects/home.page";
 import registrationPage from "../../page_objects/registration.page";
 import dashboardPage from "../../page_objects/dashboard.page";
 import loginPage from "../../page_objects/login.page";
-import verification from "../../fixtures/Verification.json";
 import user from "../../fixtures/userCredentais.json";
 
 const email = faker.internet.email();
@@ -15,21 +13,21 @@ describe("Registration", () => {
   });
 
   it("Should register a new account", () => {
-    homePage.registerBtn.click();
-    registrationPage.firstNameinput.type(user.firstName);
-    registrationPage.lastNameinput.type(user.lastName);
-    registrationPage.emailinput.type(email);
-    registrationPage.passwordinput.type(password);
+    loginPage.registerBtn.click();
+    registrationPage.firstNameInput.type(user.user.firstName);
+    registrationPage.lastNameInput.type(user.user.lastName);
+    registrationPage.emailInput.type(email);
+    registrationPage.passwordInput.type(password);
     registrationPage.submitBtn.click();
 
-    dashboardPage.roleLbl.should("have.text", "role: user");
-    dashboardPage.ptitle.should("eq", user.role1);
-    dashboardPage.fullNameLbl.should("have.text", user.rfullName);    
-    dashboardPage.userIconBtn.click();
-    dashboardPage.logoutBtn.click();
-    loginPage.loginBtn.click();
+    dashboardPage.userRoleLabel.should("have.text", "role: user");
+    dashboardPage.pageTitle.should("eq", user.user.title);
+    dashboardPage.fullNameHeader.should("have.text", user.user.fullName);    
+    dashboardPage.userIconButton.click();
+    dashboardPage.logoutBtn.click();    
     loginPage.login(email, password);
-    dashboardPage.roleLbl.should("have.text", `role: ${user.role2}`);
-    dashboardPage.fullNameLbl.should("have.text", user.rfullName);
+    
+    dashboardPage.userRoleLabel.should("have.text", `role: ${user.user.role}`);
+    dashboardPage.fullNameHeader.should("have.text", user.user.fullName);
   });
 });

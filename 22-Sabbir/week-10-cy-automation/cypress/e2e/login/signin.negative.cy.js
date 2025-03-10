@@ -1,29 +1,30 @@
 import verification from "../../fixtures/Verification.json";
 import loginPage from "../../page_objects/login.page";
+import user from "../../fixtures/userCredentais.json";
+
 describe("Negative signin", () => {
   beforeEach(() => {
     cy.visit("/");
   });
-  it("Should not login with wrong password", () => {
-    cy.visit(verification.url);
-    loginPage.emailInput.type(verification.email);
-    loginPage.passwordInput.type(verification.Wrongpassword);
+  
+  it("Should not login with an incorrect password", () => {
     loginPage.loginBtn.click();
-    loginPage.errorMessage.then(($errorMessage) => {
-      if ($errorMessage.is(":visible")) {
-        cy.visit(verification.url);
-        loginPage.emailInput.type(verification.Wrongmail); 
-        loginPage.passwordInput.type(verification.password); 
-        loginPage.loginBtn.click();
-      } else {
-        cy.log("Wrong email or password-test passed");
-      }
-      loginPage.errorMessageEmail.then(($errorMessage2) => {
-        if ($errorMessage2.is(":visible")) {
-          cy.log("The email address is invalid, test passed");
-        } else {
-        }
-      });
-    });
+    loginPage.emailInput.type(verification.email);
+    loginPage.passwordInput.type(verification.wrongpassword);
+    loginPage.loginButton.click();
+
+    loginPage.errorMessage
+      .should("be.visible")
+      .and("contain", "Wrong email or password");
+  });
+  it("Should not login with an incorrect email", () => {
+    loginPage.loginBtn.click();
+    loginPage.emailInput.type(verification.wrongmail);
+    loginPage.passwordInput.type(user.realtor.password);
+    loginPage.loginButton.click();
+
+    loginPage.errorMessageEmail
+      .should("be.visible")
+      .and("contain", "Email must be a valid email address");
   });
 });

@@ -1,17 +1,17 @@
 class DashboardPage {
-  get roleLbl() {
+  get userRoleLabel() {
     return cy.get("a p");
   }
-  get fullNameLbl() {
+  get fullNameHeader() {
     return cy.get("h6");
   }
-  get userIconBtn() {
+  get userIconButton() {
     return cy.get('button [data-testid="PersonIcon"]');
   }
   get logoutBtn() {
     return cy.contains("Logout");
   }
-  get ptitle() {
+  get pageTitle() {
     return cy.title();
   }
 }

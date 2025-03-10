@@ -3,7 +3,7 @@ import user from '../fixtures/userCredentais.json';
 
 Cypress.Commands.add(
   "login",
-  (email = user.email2, password = user.password2) => {
+  (email = user.realtor.email, password = user.realtor.password) => {
     cy.request("POST", "/api/users/login", {
       email: email,
       password: password,

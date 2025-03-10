@@ -5,19 +5,25 @@ class LoginPage {
   get passwordInput() {
     return cy.get('[type="password"]');
   }
-  get loginBtn() {
-    return cy.get('[type="submit"]');
-  }
   get errorMessageEmail() {
     return cy.contains("Email must be a valid email address");
   }
+  get loginBtn() {
+    return cy.get('[href="/auth/login"]');
+  }
+  get registerBtn() {
+    return cy.get('[href="/auth/register"]');
+  }
+ get loginButton() {
+    return cy.get('[type="submit"]').should("be.visible").should("be.enabled");
+  }  
   get errorMessage() {
-    return cy.contains("Wrong email or password");
+    return cy.contains("Wrong email or password"); 
   }  
   login(email, password) {
     this.emailInput.type(email);
     this.passwordInput.type(password);
-    this.loginBtn.click();
+    this.loginButton.click();
   }
 }
 export default new LoginPage();

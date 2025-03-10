@@ -1,8 +1,5 @@
-import loginPage from "../../page_objects/login.page";
-import homePage from "../../page_objects/home.page";
 import dashboardPage from "../../page_objects/dashboard.page";
 import logoutPage from "../../page_objects/logout.page";
-import verification from "../../fixtures/Verification.json";
 import user from "../../fixtures/userCredentais.json";
 
 describe("Login", () => {
@@ -10,11 +7,12 @@ describe("Login", () => {
 
   it("Should log-in & Logout", () => {
     cy.login();
-    cy.visit(url);
-
-    dashboardPage.roleLbl.should("have.text", `role: ${verification.role}`);
-
-    dashboardPage.ptitle.should("eq", verification.title);
+    cy.visit("/dashboard/user/profile");
+    dashboardPage.userRoleLabel.should(
+      "have.text",
+      `role: ${user.realtor.role}`
+    );
+    dashboardPage.pageTitle.should("eq", user.realtor.title);
     logoutPage.ploginBtn.click();
     logoutPage.logoutBtn.click();
 

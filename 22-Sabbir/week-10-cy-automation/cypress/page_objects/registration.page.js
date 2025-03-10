@@ -1,14 +1,14 @@
 class RegistraionPage {
-  get firstNameinput() {
+  get firstNameInput() {
     return cy.get('[name="firstName"]');
   }
-  get lastNameinput() {
+  get lastNameInput() {
     return cy.get('[name="lastName"]');
   }
-  get emailinput() {
+  get emailInput() {
     return cy.get('[name="email"]');
   }
-  get passwordinput() {
+  get passwordInput() {
     return cy.get('[name="password"]');
   }
   get submitBtn() {
