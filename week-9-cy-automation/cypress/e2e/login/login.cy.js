@@ -10,8 +10,7 @@ describe("Login", () => {
     loginPage.passwordInput.type(user.realtor.password);
     loginPage.loginBtn.click();
 
-    dashboardPage.roleLbl.should("have.text", `role: ${user.realtor.role}`);
-    
+    dashboardPage.roleLbl.should("have.text", `role: ${user.realtor.role}`);    
     dashboardPage.ptitle.should("eq", user.realtor.title);
   });
 });

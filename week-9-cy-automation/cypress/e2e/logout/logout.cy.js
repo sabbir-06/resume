@@ -9,11 +9,10 @@ describe("Login", () => {
     cy.visit("/dashboard/user/profile");
 
     dashboardPage.roleLbl.should("have.text", `role: ${user.realtor.role}`);
-
     dashboardPage.ptitle.should("eq", user.realtor.title);
-    logoutPage.ploginBtn.click();
+    logoutPage.profileLoginButton.click();
     logoutPage.logoutBtn.click();
 
-    logoutPage.varifylogout.should("have.text", "Sign in to Delek Homes");
+    logoutPage.logoutConfirmationText.should("have.text", "Sign in to Delek Homes");
   });
 });

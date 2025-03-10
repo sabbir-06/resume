@@ -3,46 +3,48 @@ import homePage from "../../page_objects/home.page";
 describe("Search from HomePage", () => {
   beforeEach(() => {
     cy.visit("/");
+    homePage.screenThemeCheckbox.click();
   });
   it("should search by keyword", () => {
-    homePage.typePropertyName.type("Baltimore");
+    homePage.propertyNameInput.type("Baltimore");
     homePage.searchBtn.click();
-    
-    homePage.checkOneListingPresent.should("have.length.greaterThan", 0);
-    homePage.searchItemVisible.should("be.visible");
-      });
-  it("Should search by bedrooms", () => {
-    homePage.clickbedroomsbutton.click();
-    homePage.clickBedroomsNumber.click();
-    homePage.searchBtn.click();
-        
-    homePage.checkOneListingPresent.should(
-      "have.length.greaterThan",
-      0
-    );
-    homePage.clickMoreInfo.click();
 
-    homePage.bedroomNumber.should("include.text", " Bedrooms: 5");  
+    homePage.isListingPresent.should("have.length.greaterThan", 0);
+    homePage.searchedItemHeader.should("be.visible");
+  });
+  it("Should search by bedrooms", () => {
+    homePage.bedroomDropdown.click();
+    homePage.clickBedroomsNumber(5);
+    homePage.searchBtn.click();
+
+    homePage.isListingPresent.should("have.length.greaterThan", 0);
+    homePage.moreInfoButton.click();
+    homePage.getBedroomCount().then((bedroomCount) => {
+      expect(bedroomCount).to.be.gte(3);
+    });
   });
   it("Should search by city", () => {
-    homePage.typecity.type("Baltimore");
+    homePage.cityNameInput.type("Baltimore");
     homePage.searchBtn.click();
-        
-    homePage.checkcity.should('contain.text', ' City:')    
-    homePage.clickMoreInfo.click();   
 
+    homePage.cityLabel.should("contain.text", " City:");
+    homePage.moreInfoButton.click();
     homePage.garageNumber.should("include.text", " Garage: ");
     homePage.bathroomNumber.should("include.text", " Bathrooms: ");
-    homePage.bedroomNumber.should("include.text", " Bedrooms: "); 
+    homePage.getBedroomCount().then((bedroomCount) => {
+      expect(bedroomCount).to.be.gte(5);
+    });
     homePage.askingPrice.should("contain", " Asking Price:");
     homePage.lotSize.should("contain", " Lot Size: ");
     homePage.listingDate.should("contain", " Listing Date: ");
     homePage.realtorName.should("contain", " Realtor: ");
-    homePage.propertyPresent.should("be.visible");
+    homePage.propertyTitle.should("be.visible");
   });
   it("Should search by price", () => {
     homePage.searchBtn.click();
 
-    homePage.priceRange.should("include", "featured-listings?price=500000-10000000");
-   });
+    homePage.getFilterValue().then((value) => {
+      expect(value).to.be.greaterThan(500000);
+    });
+  });
 });

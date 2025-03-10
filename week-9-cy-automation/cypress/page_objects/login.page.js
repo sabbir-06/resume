@@ -8,15 +8,10 @@ class LoginPage {
   get loginBtn() {
     return cy.get('[type="submit"]');
   }
-  login(email, password) {
-    this.emailInput.type(email);
-    this.passwordInput.type(password);
-    this.loginBtn.click();
-  }
   get errorMessage() {
     return cy.get('[role="alert"]');
   }
-  get errorMessageEmail() {
+  get emailErrorMessage() {
     return cy.get('.MuiFormHelperText-root.Mui-error')  
   }
   get firstNameInput() {
@@ -25,8 +20,13 @@ class LoginPage {
   get lastNameInput() {
     return cy.get('[name="lastName"]');
   }
-  get registererror() {
-    return cy.get('[role="alert"]').contains("Input data validation failed");
+  get registrationErrorMessage() {
+    return cy.get('[role="alert"]')
+  }
+  login(email, password) {
+    this.emailInput.type(email);
+    this.passwordInput.type(password);
+    this.loginBtn.click();
   }
 }
 export default new LoginPage();

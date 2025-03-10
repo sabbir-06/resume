@@ -14,6 +14,6 @@ describe("Registration-Negative", () => {
     loginPage.passwordInput.type(verificaion.Wrongpassword);
     loginPage.loginBtn.click();
 
-    loginPage.registererror.should("be.visible");
+    loginPage.registrationErrorMessage.contains("Input data validation failed").should("be.visible");
   });
 });

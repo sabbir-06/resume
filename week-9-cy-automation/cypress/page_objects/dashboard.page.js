@@ -15,5 +15,4 @@ class DashboardPage {
     return cy.title();
   }
 }
-export default new DashboardPage();  
-
+export default new DashboardPage();

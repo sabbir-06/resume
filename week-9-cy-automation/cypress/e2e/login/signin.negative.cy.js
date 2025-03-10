@@ -1,7 +1,7 @@
 import verification from "../../fixtures/verification.json";
 import userCredential from "../../fixtures/userCredentais.json";
 import loginPage from "../../page_objects/login.page";
-//import { config } from "chai";
+
 describe("Negative signin", () => {
   beforeEach(() => {
     cy.visit("/");
@@ -24,7 +24,7 @@ describe("Negative signin", () => {
     loginPage.passwordInput.type(userCredential.realtor.password);
     loginPage.loginBtn.click();
 
-    loginPage.errorMessageEmail
+    loginPage.emailErrorMessage
       .should("be.visible")
       .and("contain", "Email must be a valid email address");
   });

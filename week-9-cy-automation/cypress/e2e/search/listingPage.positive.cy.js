@@ -1,31 +1,29 @@
 import featuredListing from "../../page_objects/listing.page";
-import homePage from "../../page_objects/home.page";
 import "../../support/commands";
 
 describe("Search from featured-listings ", () => {
   beforeEach(() => {
-    //cy.login();
     cy.visit("/");
-  });
+    featuredListing.screenThemeCheckbox.click();
+   });
   it("should search by keyword", () => {
     cy.visit("/featured-listings");
-    featuredListing.typePropertyName.type("Baltimore");
+    featuredListing.propertyNameInput.type("Baltimore");
     featuredListing.searchButton.click();
 
-    featuredListing.checkOneListingPresient.should(
+    featuredListing.isListingPresent.should(
       "have.length.greaterThan",
       0
-    );
-
-    featuredListing.propertyNamePresent.should("be.visible");
+    );  
+    featuredListing.propertyNameHeading.should("be.visible");
   });
   it("Should search by bedrooms", () => {
     cy.visit("/featured-listings");
-    featuredListing.clickBedroomButton.click();
-    featuredListing.clickBedroomNumber.click();
+    featuredListing.bedroomDropdown.click();
+    featuredListing.bedroomOptionThree.click();
     featuredListing.searchButton.click();
 
-    featuredListing.checkBedroomNumber.then((text) => {
+    featuredListing.getBedroomNumberText.then((text) => {
       cy.log(`Extracted text: ${text}`);
       const cleanText = text.replace(/[^\d]/g, "");
       const bedrooms = parseInt(cleanText, 10);
@@ -34,12 +32,11 @@ describe("Search from featured-listings ", () => {
   });
   it("Should search by city", () => {
     cy.visit("/featured-listings");
-    featuredListing.typeCityName.type("Baltimore");
+    featuredListing.cityInput.type("Baltimore");
     featuredListing.searchButton.click();
-
     featuredListing.cityName.should("be.visible");
-    homePage.clickMoreInfo.click();
-
+    featuredListing.moreInfoButton.click();
+   
     featuredListing.garageNumber.should("include.text", " Garage: ");
     featuredListing.bathroomNumber.should("include.text", " Bathrooms: ");
     featuredListing.bedroomNumber.should("include.text", " Bedrooms: ");
@@ -47,15 +44,15 @@ describe("Search from featured-listings ", () => {
     featuredListing.lotSize.should("contain", " Lot Size: ");
     featuredListing.listingDate.should("contain", " Listing Date: ");
     featuredListing.realtorName.should("contain", " Realtor: ");
-    featuredListing.propertyPresent.should("be.visible"); 
+    featuredListing.squareFeet.should("contain", " Square Feet: ");
+    featuredListing.propertyTitle.should("be.visible"); 
   });
   it("Should search by price", () => {
     featuredListing.searchButton.click();
 
-    featuredListing.checkUrl.should(
-      "include",
-      "featured-listings?price=500000-10000000"
-    );
-    featuredListing.checkTitle.should("eq", "Estate Objects | Delek Homes");
+    featuredListing.getFilterValue().then((value) => {
+      expect(value).to.be.greaterThan(500000);
+    });
+    featuredListing.pageTitle.should("eq", "Estate Objects | Delek Homes");
   });
 });
