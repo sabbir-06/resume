@@ -12,7 +12,15 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+        
+    - name: Ensure project directory exists
+      run: |
+        if [ ! -d "project" ]; then
+          mkdir project
+        fi
+
     - name: Navigate to project directory
       run: cd project
+
     - run: npm install
     - run: npm test
