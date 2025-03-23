@@ -1,0 +1,6 @@
+{
+    "wrongpassword": "this is wrongpassword",
+    "errorMessage": "Email must be a valid email address",
+    "wrongErrorEmailMesg": "Wrong email or password",
+    "signInText": "Sign in to Delek Homes"
+}

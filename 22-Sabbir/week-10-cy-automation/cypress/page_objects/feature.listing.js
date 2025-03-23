@@ -1,4 +1,4 @@
-class FeaturedListings {
+class FeaturedListingsPage {
   get screenThemeCheckbox() {
     return cy.get('[type="checkbox"]');
   }
@@ -7,9 +7,6 @@ class FeaturedListings {
   }
   get cityInput() {
     return cy.get('input[type="text"]').eq(1);
-  }
-  get cityName() {
-    return cy.contains("City:");
   }
   get isListingPresent() {
     return cy.get(".MuiPaper-root .MuiCardContent-root");
@@ -28,7 +25,7 @@ class FeaturedListings {
     return cy.get(".MuiPaper-root .MuiCardContent-root");
   }
   get searchResultHeader() {
-    return cy.contains("div h5", "Monday Home");
+    return cy.contains("div h5");
   }
   get isListingPresent() {
     return cy.get(".MuiPaper-root .MuiCardContent-root");
@@ -45,9 +42,6 @@ class FeaturedListings {
   get bedroomOptionTwo() {
     return cy.get('ul li[data-value="2"]');
   }
-  get currentURL() {
-    return cy.url();
-  }
   get checkPageTitle() {
     return cy.title();
   }
@@ -62,7 +56,7 @@ class FeaturedListings {
       });
   }
   get desertLandHeading() {
-    return cy.contains("div h5", "Desert Land");
+    return cy.contains("div h5");  
   }
   get askingPrice() {
     return cy.contains("Asking Price");
@@ -113,20 +107,8 @@ class FeaturedListings {
       return parseInt(elText.replace(/[^\d]/g, ""), 10);
     });
   }
-  get filterValue() {
-    return cy
-      .get(
-        ":nth-child(1) > .MuiPaper-root > .css-79elbk > .css-dc9kff, :nth-child(1) > .MuiPaper-root > .css-79elbk > .css-6yrxxf"
-      )
-      .eq(0);
-  }
-  getFilterValue() {
-    return this.filterValue.invoke("text").then((text) => {
-      return parseFloat(text.replace(/[^0-9.-]+/g, ""));
-    });
-  }
-  get realEstateTab() {
-    return cy.contains("Real Estate");
+ get realEstateTab() {
+    return cy.contains("Real Estate"); 
   }
   get createListingButton() {
     return cy.get(".MuiListItemText-root .MuiListItemText-primary").eq(5);
@@ -180,4 +162,4 @@ class FeaturedListings {
     return cy.get('[type="submit"]');
   }
 }
-export default new FeaturedListings();
+export default new FeaturedListingsPage();

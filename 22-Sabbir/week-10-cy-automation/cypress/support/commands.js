@@ -1,23 +1,9 @@
 import "cypress-file-upload";
-import user from '../fixtures/userCredentais.json';
-
-Cypress.Commands.add(
-  "login",
-  (email = user.realtor.email, password = user.realtor.password) => {
-    cy.request("POST", "/api/users/login", {
-      email: email,
-      password: password,
-    }).then((response) => {
-      window.localStorage.setItem("accessToken", response.body.accessToken);
-    });
-  }
-); 
-
 Cypress.Commands.add("rlogin", () => {
   cy.fixture("userCredentais.json").then((data) => {
     cy.request("POST", "/api/users/login", {
-      email: data.email2,
-      password: data.password2,
+      email: data.realtor.email,
+      password: data.realtor.password
     }).then((response) => {
       cy.log("Login response body:", response.body);
       window.localStorage.setItem("accessToken", response.body.accessToken);
@@ -28,37 +14,25 @@ Cypress.Commands.add("rlogin", () => {
     });
   });
 });
-
 Cypress.on("uncaught:exception", (err, runnable) => {
   return false;
 });
+Cypress.Commands.add(
+  "createListing",
+  (listingData, imageBase64, token) => {
+    const blob = Cypress.Blob.base64StringToBlob(imageBase64, "image/jpg");
+    const formData = new FormData();
 
-Cypress.Commands.add("loadListingData", () => {
-  return cy.fixture("listingData.json");
-});
+    formData.append("images", blob);
+    Object.entries(listingData).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
 
-Cypress.Commands.add("loginAndGetToken", () => {
-  cy.rlogin().then(() => {
-    const token = window.localStorage.getItem("accessToken");
-    cy.log(`Token after login: ${token}`);
-    return cy.wrap(token);
-  });
-});
-
-
-
-// Cypress.Commands.add("login12", () => {
-//   cy.fixture("userCredentais").then((data) => {
-//     cy.request("POST", "/api/users/login", {
-//       email: data.email,
-//       password: data.password,
-//     }).then((response) => {
-//       cy.log("Login response body: ", JSON.stringify(response.body));
-//       // Adjust the property name based on the actual response structure:
-//       const token = response.body.accesstoken || response.body.token || (response.body.data && response.body.data.token);
-//       cy.log(`Extracted token: ${token}`);
-//       window.localStorage.setItem("accessToken", token);
-//     });
-//   });
-// });
-
+    return cy.request({
+      method: "POST",
+      url: "https://dev.delekhomes.com/api/estate-objects",
+      body: formData,
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  }
+);

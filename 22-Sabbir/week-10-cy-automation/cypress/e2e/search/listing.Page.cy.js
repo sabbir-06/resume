@@ -1,58 +1,58 @@
-import featureListing from "../../page_objects/feature.listing";
+import FeaturedListingsPage from "../../page_objects/feature.listing";
 import listingData from "../../fixtures/listingData.json"
 
 describe("search from feaure listing page", () => {
   beforeEach(() => {
-    cy.login();
+    cy.rlogin();
     cy.visit("/");
   });
 
   it("should search by keyword", () => {
     cy.visit("/");
-    featureListing.screenThemeCheckbox.click();
-    featureListing.propertyNameInput.type(listingData.secondtitile);
-    featureListing.submitButton.click();
+    FeaturedListingsPage.screenThemeCheckbox.click();
+    FeaturedListingsPage.propertyNameInput.type(listingData.secondtitile);
+    FeaturedListingsPage.submitButton.click();
 
-    featureListing.propertyListings.should("have.length.greaterThan", 0);
-    featureListing.searchResultHeader.should("be.visible");
+    FeaturedListingsPage.propertyListings.should("have.length.greaterThan", 0);
+    FeaturedListingsPage.searchResultHeader.should("be.visible");
    });
   it("Should search by bedrooms", () => {
     cy.visit("/");
-    featureListing.screenThemeCheckbox.click();
-    featureListing.bedroomDropdown.click();
-    featureListing.bedroomOptionTwo.click();
-    featureListing.submitButton.click();
+    FeaturedListingsPage.screenThemeCheckbox.click();
+    FeaturedListingsPage.bedroomDropdown.click();
+    FeaturedListingsPage.bedroomOptionTwo.click();
+    FeaturedListingsPage.submitButton.click();
 
-    featureListing.propertyListings.should("have.length.greaterThan", 0);
-    featureListing.moreInfoButton.click();
-    featureListing.getBedroomCount().then((bedroomCount) => {
+    FeaturedListingsPage.propertyListings.should("have.length.greaterThan", 0);
+    FeaturedListingsPage.moreInfoButton.click();
+    FeaturedListingsPage.getBedroomCount().then((bedroomCount) => {
       expect(bedroomCount).to.be.gte(3);
     });
     });
   it("Should search by city", () => {
     cy.visit("/");
-    featureListing.screenThemeCheckbox.click();
-    featureListing.cityInput.type(listingData.city);    
-    featureListing.submitButton.click();
+    FeaturedListingsPage.screenThemeCheckbox.click();
+    FeaturedListingsPage.cityInput.type(listingData.city);    
+    FeaturedListingsPage.submitButton.click();
 
-    featureListing.cityLabel.should("contain.text", " City:");
-    featureListing.moreInfoButton.click();
-    featureListing.garageNumber.should("include.text", " Garage: ");
-    featureListing.bathroomNumber.should("include.text", " Bathrooms: ");
-    featureListing.getBedroomCount().then((bedroomCount) => {
+    FeaturedListingsPage.cityLabel.should("contain.text", " City:");
+    FeaturedListingsPage.moreInfoButton.click();
+    FeaturedListingsPage.garageNumber.should("include.text", " Garage: ");
+    FeaturedListingsPage.bathroomNumber.should("include.text", " Bathrooms: ");
+    FeaturedListingsPage.getBedroomCount().then((bedroomCount) => {
       expect(bedroomCount).to.be.gte(5);
     });
-    featureListing.askingPrice.should("contain", " Asking Price:");
-    featureListing.lotSize.should("contain", " Lot Size: ");
-    featureListing.listingDate.should("contain", " Listing Date: ");
-    featureListing.realtorName.should("contain", " Realtor: ");
-    featureListing.propertyTitle.should("be.visible");
+    FeaturedListingsPage.askingPrice.should("contain", " Asking Price:");
+    FeaturedListingsPage.lotSize.should("contain", " Lot Size: ");
+    FeaturedListingsPage.listingDate.should("contain", " Listing Date: ");
+    FeaturedListingsPage.realtorName.should("contain", " Realtor: ");
+    FeaturedListingsPage.propertyTitle.should("be.visible");
   });
   it("Should search by price", () => {
     cy.visit("/");
-    featureListing.screenThemeCheckbox.click();
-    featureListing.submitButton.click();
-    featureListing.getFilterValue().then((value) => {
+    FeaturedListingsPage.screenThemeCheckbox.click();
+    FeaturedListingsPage.submitButton.click();
+    FeaturedListingsPage.getFilterValue().then((value) => {
       expect(value).to.be.greaterThan(500000);
     });
   });

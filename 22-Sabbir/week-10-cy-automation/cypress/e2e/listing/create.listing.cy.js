@@ -40,10 +40,10 @@ describe("Login with admin api token and create listing with assertions", () => 
 
     featureListing.askingPrice.should(
       "include.text",
-      "Asking Price: $ 1,000,000"
+      "Asking Price: $ " + listingDataUI.price
     );
-    featureListing.lotSize.should("include.text", " Lot Size: 2");
-    featureListing.garageNumber.should("include.text", " Garage: 2");  
+    featureListing.lotSize.should("include.text", " Lot Size: " + listingDataUI.lotSize);
+    featureListing.garageNumber.should("include.text", " Garage: " + listingDataUI.garage);  
     featureListing.propertyRealtorVisible;
   });
 });          

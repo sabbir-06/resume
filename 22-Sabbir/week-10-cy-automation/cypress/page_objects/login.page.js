@@ -20,6 +20,7 @@ class LoginPage {
   get errorMessage() {
     return cy.contains("Wrong email or password"); 
   }  
+  
   login(email, password) {
     this.emailInput.type(email);
     this.passwordInput.type(password);

@@ -1,4 +1,4 @@
-class Logout {
+class LogoutPage {
   get ploginBtn() {
     return cy.get('[type="button"]').eq(0);
   }
@@ -9,4 +9,4 @@ class Logout {
     return cy.get("div h4")
   }
 }
-export default new Logout();
+export default new LogoutPage();

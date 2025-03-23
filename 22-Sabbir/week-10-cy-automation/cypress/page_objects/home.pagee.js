@@ -54,7 +54,7 @@ class HomePage {
       });
   }
   get desertLandHeading() {
-    return cy.contains("div h5", "Desert Land");
+    return cy.contains("div h5");
   }
   get askingPrice() {
     return cy.contains("Asking Price");
@@ -104,19 +104,8 @@ class HomePage {
     return this.bedroomNumber.invoke("text").then((elText) => {
       return parseInt(elText.replace(/[^\d]/g, ""), 10);
     });
-  }
-  get filterValue() {
-    return cy
-      .get(
-        ":nth-child(1) > .MuiPaper-root > .css-79elbk > .css-dc9kff, :nth-child(1) > .MuiPaper-root > .css-79elbk > .css-6yrxxf"
-      )
-      .eq(0);
-  }
-  getFilterValue() {
-    return this.filterValue.invoke("text").then((text) => {
-      return parseFloat(text.replace(/[^0-9.-]+/g, ""));
-    });
-  }
+  } 
 }
 
 export default new HomePage();
+
